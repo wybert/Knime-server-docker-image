@@ -1,4 +1,5 @@
-# uodate the base image
+FROM        ubuntu:20.04
+# update the base image
 RUN apt-get update
 
 # install openjdk 11 and libgtk-3-0
@@ -22,14 +23,11 @@ RUN bash Mambaforge-Linux-x86_64.sh -b -p mambaforge
 # remove the installer
 RUN rm Mambaforge-Linux-x86_64.sh
 RUN conda clean --tarballs --index-cache --packages --yes && conda clean --force-pkgs-dirs --all --yes
-
 # configure the python env
 ENV CONDA_DIR /opt/knime/mambaforge
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH=$CONDA_DIR/bin:$PATH
-
 RUN  echo ". ${CONDA_DIR}/etc/profile.d/conda.sh && conda activate base" >> /etc/skel/.bashrc &&     echo ". ${CONDA_DIR}/etc/profile.d/conda.sh && conda activate base" >> ~/.bashrc # buildkit
-
 RUN ./mambaforge/bin/conda init
 # RUN mamba env create -f python_env.yml
 
