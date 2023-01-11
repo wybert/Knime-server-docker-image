@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<AutomatedInstallation langpack="eng">
+    <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id="welcome"/>
+    <com.izforge.izpack.panels.knime.ExtendedJDKPathPanel id="jdk_path">
+        <jdkPath>/usr/lib/jvm/java-11-openjdk-amd64</jdkPath>
+        <jdkVarName>jdkPath</jdkVarName>
+    </com.izforge.izpack.panels.knime.ExtendedJDKPathPanel>
+    <com.izforge.izpack.panels.target.TargetPanel id="install_dir">
+        <installpath>/opt/knime/knime_server</installpath>
+    </com.izforge.izpack.panels.target.TargetPanel>
+    <com.izforge.izpack.panels.userinput.UserInputPanel id="KNIME Executor Installation Panel">
+        <entry key="variable.knime.izpack.executor.type" value="new_installation"/>
+    </com.izforge.izpack.panels.userinput.UserInputPanel>
+    <com.izforge.izpack.panels.userinput.UserInputPanel id="KNIME Executor Installation Folder Select (New)">
+        <entry key="variable.knime.izpack.executor.install.url0" value="https://update.knime.com/analytics-platform/4.7/"/>
+        <entry key="variable.knime.izpack.executor.install.url1" value="https://update.knime.com/community-contributions/trusted/4.7/"/>
+        <entry key="variable.knime.izpack.executor.install.url2" value=""/>
+        <entry key="variable.knime.izpack.executor.install.url3" value=""/>
+        <entry key="variable.knime.izpack.executor.installationpath" value="/opt/knime/knime_server/knime_executor"/>
+    </com.izforge.izpack.panels.userinput.UserInputPanel>
+    <com.izforge.izpack.panels.process.ProcessPanel id="panel.process.knime-exec"/>
+    <com.izforge.izpack.panels.userinput.UserInputPanel id="KNIME Server Workflow Repository">
+        <entry key="variable.knime.izpack.workflow.repository" value="/opt/knime/knime_server/workflow_repository"/>
+    </com.izforge.izpack.panels.userinput.UserInputPanel>
+    <com.izforge.izpack.panels.userinput.UserInputPanel id="KNIME Server License File">
+        <entry key="variable.knime.izpack.file.license" value=""/>
+    </com.izforge.izpack.panels.userinput.UserInputPanel>
+    <com.izforge.izpack.panels.userinput.UserInputPanel id="KNIME Server Ports and Memory Settings">
+        <entry key="variable.knime.izpack.port.https" value="8443"/>
+        <entry key="variable.knime.izpack.port.http" value="8080"/>
+    </com.izforge.izpack.panels.userinput.UserInputPanel>
+    <com.izforge.izpack.panels.userinput.UserInputPanel id="KNIME Server Mount Point and Context Root">
+        <entry key="variable.knime.izpack.server.contextroot" value="knime"/>
+        <entry key="variable.knime.izpack.server.mountpoint" value="cga-knime-server"/>
+    </com.izforge.izpack.panels.userinput.UserInputPanel>
+    <com.izforge.izpack.panels.userinput.UserInputPanel id="KNIME Server Admin">
+        <entry key="variable.knime.izpack.admin.user" value="knimeadmin"/>
+        <entry key="variable.knime.izpack.admin.pass" value="k-82dn"/>
+    </com.izforge.izpack.panels.userinput.UserInputPanel>
+    <com.izforge.izpack.panels.userinput.UserInputPanel id="KNIME Server Email Resource">
+        <entry key="variable.knime.izpack.email.mail.smtp.host" value="localhost"/>
+        <entry key="variable.knime.izpack.email.mail.smtp.user" value="knime"/>
+        <entry key="variable.knime.izpack.email.mail.smtp.from" value="knime@localhost"/>
+        <entry key="variable.knime.izpack.email.setup" value="true"/>
+    </com.izforge.izpack.panels.userinput.UserInputPanel>
+    <com.izforge.izpack.panels.install.InstallPanel id="panel.install.tomee"/>
+    <com.izforge.izpack.panels.process.ProcessPanel id="panel.process.tomee"/>
+    <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id="goodbye"/>
+    <com.izforge.izpack.panels.knime.ExtendedFinishPanel id="finish"/>
+</AutomatedInstallation>
