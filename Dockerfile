@@ -70,9 +70,11 @@ VOLUME   ["/opt/knime/knime_server/workflow_repository/workflows"]
 
 USER root
 RUN chown knime /opt/knime/knime_server/workflow_repository/workflows
+# RUN cp -r /opt/knime/knime_server/install-data/linux-runlevel-templates/systemd/. /
 
-RUN cp -r /opt/knime/knime_server/install-data/linux-runlevel-templates/systemd/. /
-RUN systemctl daemon-reload
 
 EXPOSE  8080 8443
 # knimeadmin/k-82dn
+
+# start the knime server and executor
+CMD bash -c "/opt/knime/knime_server/apache-tomcat-9.0.68/bin/startup.sh && /opt/knime/knime_server/knime_executor/start-executor.sh"
