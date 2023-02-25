@@ -6,7 +6,21 @@ RUN apt-get update
 RUN apt-get install -yq openjdk-11-jdk libgtk-3-0
 
 # install other useful tool like wget, git, vim, tmux and sudo
-RUN apt-get install -yq wget git vim tmux sudo
+RUN apt-get install -yq wget git vim tmux sudo fish ranger libssl-dev
+
+# install r-base
+# update indices
+RUN apt update -qq -yq
+# install two helper packages we need
+RUN apt install -yq --no-install-recommends software-properties-common dirmngr
+# add the signing key (by Michael Rutter) for these repos
+# To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc 
+# Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
+RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+RUN apt install -yq --no-install-recommends r-base
+
 
 # create a user for knime server setup
 RUN useradd -d /opt/knime -m -s /bin/bash knime
@@ -56,6 +70,9 @@ VOLUME   ["/opt/knime/knime_server/workflow_repository/workflows"]
 
 USER root
 RUN chown knime /opt/knime/knime_server/workflow_repository/workflows
+
+RUN cp -r /opt/knime/knime_server/install-data/linux-runlevel-templates/systemd/. /
+RUN systemctl daemon-reload
 
 EXPOSE  8080 8443
 # knimeadmin/k-82dn
