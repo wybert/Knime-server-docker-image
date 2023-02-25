@@ -1,0 +1,21 @@
+/instance/org.knime.workbench.core/database_timeout=120
+
+# Add a mount point for this server. This is useful for the new filehandling nodes.
+/instance/org.knime.workbench.explorer.view/mountpointNode/KNIME-Server/active=true
+/instance/org.knime.workbench.explorer.view/mountpointNode/KNIME-Server/address=${origin:KNIME-EJB-Address}
+/instance/org.knime.workbench.explorer.view/mountpointNode/KNIME-Server/factoryID=com.knime.explorer.server
+/instance/org.knime.workbench.explorer.view/mountpointNode/KNIME-Server/mountID=${origin:KNIME-Default-Mountpoint-ID}
+/instance/org.knime.workbench.explorer.view/mountpointNode/KNIME-Server/mountpointNumber=1
+/instance/org.knime.workbench.explorer.view/mountpointNode/KNIME-Server/restPath=${origin:KNIME-Context-Root}/rest
+/instance/org.knime.workbench.explorer.view/mountpointNode/KNIME-Server/user=${sysprop:user.name}
+/instance/org.knime.workbench.explorer.view/mountpointNode/KNIME-Server/useRest=true
+# add python path here
+/instance/org.knime.python2/condaDirectoryPath=/opt/knime/mambaforge
+/instance/org.knime.python2/defaultPythonOption=python3
+/instance/org.knime.python2/python2CondaEnvironmentDirectoryPath=/opt/knime/mambaforge
+/instance/org.knime.python2/python2Path=python
+/instance/org.knime.python2/python3CondaEnvironmentDirectoryPath=/opt/knime/mambaforge/envs/knime_py39
+/instance/org.knime.python2/python3Path=python3
+/instance/org.knime.python2/pythonEnvironmentType=conda
+/instance/org.knime.python2/serializerId=org.knime.serialization.flatbuffers.column
+/instance/org.knime.ext.r.bin/knime.r.home=/usr/lib/R

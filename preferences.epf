@@ -1,0 +1,12 @@
+#Wed Mar 02 14:26:59 EST 2022
+\!/=
+/configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
+/instance/org.knime.python2/condaDirectoryPath=/opt/knime/mambaforge
+/instance/org.knime.python2/defaultPythonOption=python3
+/instance/org.knime.python2/python2CondaEnvironmentDirectoryPath=/opt/knime/mambaforge
+/instance/org.knime.python2/python2Path=python
+/instance/org.knime.python2/python3CondaEnvironmentDirectoryPath=/opt/knime/mambaforge/envs/knime_py39
+/instance/org.knime.python2/python3Path=python3
+/instance/org.knime.python2/pythonEnvironmentType=conda
+/instance/org.knime.python2/serializerId=org.knime.serialization.flatbuffers.column
+/instance/org.knime.ext.r.bin/knime.r.home=/usr/lib/R
