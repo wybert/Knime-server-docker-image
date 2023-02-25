@@ -29,7 +29,7 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH=$CONDA_DIR/bin:$PATH
 RUN  echo ". ${CONDA_DIR}/etc/profile.d/conda.sh && conda activate base" >> /etc/skel/.bashrc &&     echo ". ${CONDA_DIR}/etc/profile.d/conda.sh && conda activate base" >> ~/.bashrc # buildkit
 RUN ./mambaforge/bin/conda init
-# RUN mamba env create -f python_env.yml
+RUN ./mambaforge/bin/mamba env create -f python_env.yml
 
 # Download and install knime server and rename it as knime_installer.jar
 RUN wget https://download.knime.com/server/4.16/4.16.0/knime-server-installer-4.16.0.0129-aea6215f.jar -O /opt/knime/knime_installer.jar
