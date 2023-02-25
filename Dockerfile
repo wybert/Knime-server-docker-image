@@ -66,15 +66,34 @@ COPY preferences.epf /opt/knime/knime_server/knime_executor/configuration/
 # RUN cp -rf executor.epf /opt/knime/knime_server/workflow_repository/config/client-profiles/executor/
 # RUN cp -rf preferences.epf /opt/knime/knime_server/knime_executor/configuration/
 # mount the workflow repository folder
-VOLUME   ["/opt/knime/knime_server/workflow_repository/workflows"]
+
+# install theme
+WORKDIR /opt/knime/knime_server/workflow_repository/config 
+RUN git clone https://github.com/spatial-data-lab/webportal2Theme.cga.git
+# RUN vim knime-server.config
+WORKDIR /opt/knime
+
 
 USER root
 RUN chown knime /opt/knime/knime_server/workflow_repository/workflows
 # RUN cp -r /opt/knime/knime_server/install-data/linux-runlevel-templates/systemd/. /
 
+# install RabbitMQ
+USER root
+COPY install.sh /opt/knime/install.sh
+RUN sudo bash install.sh
 
+# configre RabbitMQ
+# RUN sudo rabbitmqctl add_user knime 20knime16
+# RUN sudo rabbitmqctl add_vhost knime-server
+# RUN sudo rabbitmqctl set_permissions --vhost knime-server knime ".*" ".*" ".*"
+
+# maystill need manully fix the rabbitmqctl
+# change the 
+
+VOLUME   ["/opt/knime/knime_server/workflow_repository/workflows"]
 EXPOSE  8080 8443
 # knimeadmin/k-82dn
 
 # start the knime server and executor
-CMD bash -c "/opt/knime/knime_server/apache-tomcat-9.0.68/bin/startup.sh && /opt/knime/knime_server/knime_executor/start-executor.sh"
+# CMD bash -c "/opt/knime/knime_server/apache-tomcat-9.0.68/bin/startup.sh && /opt/knime/knime_server/knime_executor/start-executor.sh"

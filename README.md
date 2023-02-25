@@ -9,9 +9,9 @@ This project will make setting up or updating Knime server easier. It's not done
 
 ```bash
 
-docker pull 
+sudo docker build -t knime-server:4.16 .  
 
-docker run
+sudo docker run -p 8080:8080 -p 8443:8443  -it knime-server:4.16
 
 ```
 
